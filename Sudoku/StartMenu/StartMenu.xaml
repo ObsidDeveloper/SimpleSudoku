@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Sudoku.StartMenu.StartMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sudoku.StartMenu"
+             xmlns:commands="clr-namespace:Sudoku.Commands"
+             xmlns:sudoku="clr-namespace:Sudoku.SudokuGrid"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:mainwindow="clr-namespace:Sudoku"
+             mc:Ignorable="d" 
+             d:DesignWidth="360" d:DesignHeight="360">
+    <UserControl.Resources>
+        <x:Static x:Key="EasyMod"  Member="sudoku:GameDifficulty.Easy"></x:Static>
+        <x:Static x:Key="NormalMod" Member="sudoku:GameDifficulty.Normal"/>
+        <x:Static x:Key="HardMod" Member="sudoku:GameDifficulty.Hard"/>
+
+        <sys:Double x:Key="ButtonFontSize">22</sys:Double>
+
+        <SolidColorBrush x:Key="ButtonBackgroung" Color="Azure"/>
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="commands:SudokuUICommands.StartGame" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
+    </UserControl.CommandBindings>
+    <Grid Margin="0,0,0,0">
+        <Button Content="Легкая" Background="{StaticResource ButtonBackgroung}" FontSize="{StaticResource ButtonFontSize}" TextBlock.TextAlignment="Center" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Command="commands:SudokuUICommands.StartGame" CommandParameter="{StaticResource EasyMod}" Height="45" Width="160" >
+        </Button>
+        <Button Content="Средняя" Background="{StaticResource ButtonBackgroung}" FontSize="{StaticResource ButtonFontSize}" HorizontalAlignment="Center" Margin="0,219,0,0" VerticalAlignment="Top" Command="commands:SudokuUICommands.StartGame" CommandParameter="{StaticResource NormalMod}" Width="160" Height="45" />
+        <Button Content="Тяжелая" Background="{StaticResource ButtonBackgroung}" FontSize="{StaticResource ButtonFontSize}" HorizontalAlignment="Center" Margin="0,266,0,0" VerticalAlignment="Top" Command="commands:SudokuUICommands.StartGame" CommandParameter="{StaticResource HardMod}" Width="160" Height="45" />
+        <Label Content="Начать новую игру:" Foreground="CadetBlue" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="MessageLabel" Content="" FontSize="24" Foreground="CadetBlue" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top"/>
+        
+    </Grid>
+</UserControl>
